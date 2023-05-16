@@ -1,11 +1,16 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: VT323, sans-serif;
 }
 
 #title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 5rem;
+}
+
+.colorful-letter {
+  display: inline-block;
 }
 
 body {

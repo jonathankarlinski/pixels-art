@@ -75,6 +75,26 @@ const paletteSize = () => {
   });
 };
 
+function alterarCores() {
+  const titleElement = document.getElementById('title');
+  const frase = titleElement.innerText;
+  const palavras = frase.split(' ');
+  let resultado = '';
+  for (let i = 0; i < palavras.length; i += 1) {
+    const palavra = palavras[i];
+    const letras = palavra.split('');
+    for (let j = 0; j < letras.length; j += 1) {
+      const letra = letras[j];
+      const cor = getRandomColor();
+      resultado += `<span class="colorful-letter" style="color: ${cor};">${letra}</span>`;
+    }
+    if (i < palavras.length - 1) {
+      resultado += ' ';
+    }
+  }
+
+  titleElement.innerHTML = resultado;
+}
 const randomColors = () => {
   const color = document.querySelectorAll('.color');
   for (let index = 1; index < color.length; index += 1) {
@@ -90,5 +110,7 @@ window.onload = () => {
   paletteSize();
   clickColor();
   clickClean();
+  alterarCores();
   buttonRandom.addEventListener('click', randomColors);
+  buttonRandom.addEventListener('click', alterarCores);
 };
