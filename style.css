@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   font-family: VT323, sans-serif;
+  text-align: center;
 }
 
 #title {
-  text-align: center;
   font-size: 5rem;
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 #color-board p {
-  font-size: 16px;
+  font-size: 1.1rem;
 }
 
 #board-size {
@@ -91,7 +91,6 @@ body {
 
 #generate-board {
   background-color: blue;
-  padding-left: 0;
 }
 
 #pixel-board {
