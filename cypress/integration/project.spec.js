@@ -5,11 +5,11 @@ function chunk(arr, len) {
   const chunks = [];
   let i = 0;
   const n = arr.length;
-
   while (i < n) {
-    chunks.push(arr.slice(i, i += len));
+    const chunk = arr.slice(i, i + len);
+    chunks.push(chunk);
+    i += len;
   }
-
   return chunks;
 }
 
@@ -37,8 +37,8 @@ describe('2 - Adicione à página uma paleta de quatro cores distintas.', () => 
     cy.get('.color')
       .should('have.length', 4)
       .then((colors) => {
-        for (let i = 0; i < colors.length; i++) {
-          cy.wrap(colors[i])
+        for (const color of colors) {
+          cy.wrap(color)
             .should('be.visible');
         }
       });
@@ -254,7 +254,6 @@ describe('7 - Clicar em uma das cores da paleta, faz com que ela seja selecionad
 
   it('Verifica se os pixels dentro do quadro não têm a classe `selected` quando são clicados', () => {
     cy.get('.color').each((color) => {
-      const backgroundColor = color.css('background-color');
       cy.wrap(color).click();
       cy.get('.pixel').each((pixel) => {
         cy.wrap(pixel)
