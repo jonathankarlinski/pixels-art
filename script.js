@@ -48,9 +48,10 @@ const clickClean = () => {
   const clearButton = document.getElementById('clear-board');
   const pixel = document.querySelectorAll('.pixel');
   clearButton.addEventListener('click', () => {
-    for (let index = 0; index < pixel.length; index += 1) {
-      pixel[index].style.backgroundColor = 'white';
-    }
+    pixel.forEach((pixelElement) => {
+      const updatedPixelElement = pixelElement;
+      updatedPixelElement.style.backgroundColor = 'white';
+    });
   });
 };
 
@@ -80,21 +81,21 @@ function alterarCores() {
   const frase = titleElement.innerText;
   const palavras = frase.split(' ');
   let resultado = '';
-  for (let i = 0; i < palavras.length; i += 1) {
-    const palavra = palavras[i];
+
+  palavras.forEach((palavra, i) => {
     const letras = palavra.split('');
-    for (let j = 0; j < letras.length; j += 1) {
-      const letra = letras[j];
+    letras.forEach((letra) => {
       const cor = getRandomColor();
       resultado += `<span class="colorful-letter" style="color: ${cor};">${letra}</span>`;
-    }
+    });
     if (i < palavras.length - 1) {
       resultado += ' ';
     }
-  }
+  });
 
   titleElement.innerHTML = resultado;
 }
+
 const randomColors = () => {
   const color = document.querySelectorAll('.color');
   for (let index = 1; index < color.length; index += 1) {
