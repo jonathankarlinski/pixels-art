@@ -3,11 +3,11 @@ const colorPalette = document.querySelector('#color-palette');
 const buttonRandom = document.querySelector('#random-color');
 
 const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let colors = '#';
-  for (let index = 0; index < 6; index += 1) {
-    colors += letters[Math.floor(Math.random() * 16)];
-  }
+  const colorValues = new Uint8Array(3);
+  crypto.getRandomValues(colorValues);
+  const colors = `#${Array.from(colorValues)
+    .map((value) => value.toString(16).padStart(2, '0'))
+    .join('')}`;
   return colors;
 };
 
